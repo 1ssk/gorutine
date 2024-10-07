@@ -16,7 +16,7 @@ func workAndPrint(num int) {
 
 func main() {
 	for i := 1; i <= 5; i++ {
-		workAndPrint(i)
+		go workAndPrint(i) //add go test (delete next)
 	}
 
 	time.Sleep(100 * time.Millisecond)
