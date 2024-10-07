@@ -5,13 +5,19 @@ import (
 	"time"
 )
 
-func main() {
-	for i := 0; i < 5; i++ {
-		go func(counter int) {
-			time.Sleep(time.Second)
-			fmt.Print(counter)
-
-		}(i)
+func workAndPrint(num int) {
+	fmt.Printf("start job #%v\n", num)
+	var calc int
+	for i := 0; i < 1000; i++ {
+		calc = i * num
 	}
-	time.Sleep(2 * time.Second)
+	fmt.Printf("end job #%v: calc = %v\n", num, calc)
+}
+
+func main() {
+	for i := 1; i <= 5; i++ {
+		workAndPrint(i)
+	}
+
+	time.Sleep(100 * time.Millisecond)
 }
